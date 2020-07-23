@@ -10,6 +10,8 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import javax.inject.Singleton
 
+//TODO this needs to be changed into the url running the api service
+const val BASE_URL = "http://10.0.0.101:5000"
 
 /**
  *
@@ -21,8 +23,7 @@ object AppModule {
     @Singleton
     @Provides
     fun provideApiService() : ApiService =  Retrofit.Builder()
-        //TODO this needs to be changed into the url running the api service
-        .baseUrl("http://10.0.0.101:5000")
+        .baseUrl(BASE_URL)
         .addConverterFactory(GsonConverterFactory.create())
         .build()
         .create(ApiService::class.java)
